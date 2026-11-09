@@ -1,0 +1,48 @@
+/* ---------- شريط التقدم ---------- */
+.progress { height: 10px; border-radius: 999px; background: var(--border); overflow: hidden; }
+.progress > span { display: block; height: 100%; border-radius: 999px; background: var(--accent); transition: width .3s ease; }
+.hero-card .progress { background: rgba(255, 255, 255, .18); }
+.hero-progress { margin-top: 14px; max-width: 420px; display: grid; gap: 6px; }
+.hero-progress small { color: var(--sidebar-text); }
+.progress-meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 8px; font-size: 13px; color: var(--muted); }
+.done-text { color: var(--success); }
+
+/* ---------- كورسات الطالب ---------- */
+.section-title { margin: 8px 0 14px; }
+.course-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
+.course-card { display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: inherit; transition: transform .15s, box-shadow .15s, border-color .15s; }
+.course-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--accent); }
+.course-card h3 { font-size: 18px; }
+.course-tags { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.course-progress { margin-top: auto; padding-top: 6px; }
+.course-cta { color: var(--gold-ink); }
+.course-desc { margin-bottom: 14px; }
+.course-summary { margin-bottom: 16px; }
+
+/* ---------- الدروس ---------- */
+.lesson-link {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 12px 14px;
+  border: 1px solid var(--border); border-radius: 10px; background: var(--bg);
+  text-decoration: none; color: inherit; transition: border-color .15s, background .15s;
+}
+.lesson-link:hover { border-color: var(--accent); background: var(--surface-2); }
+.lesson-link-title { flex: 1; font-weight: 500; }
+.lesson-status {
+  display: grid; place-items: center; width: 26px; height: 26px; flex-shrink: 0;
+  border: 2px solid var(--border); border-radius: 50%; color: #fff;
+}
+.lesson-status.done { background: var(--success); border-color: var(--success); }
+
+.video-frame { position: relative; aspect-ratio: 16 / 9; margin-bottom: 18px; overflow: hidden; border-radius: var(--radius); background: #000; box-shadow: var(--shadow-md); }
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.lesson-content { margin-bottom: 18px; font-size: 17px; line-height: 2; white-space: pre-wrap; word-break: break-word; }
+.media-link { margin-bottom: 18px; margin-inline-end: 10px; }
+.lesson-actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+.btn-done { background: var(--success); color: #fff; }
+.btn-done:hover:not(:disabled) { filter: brightness(.92); }
+a.btn-primary, a.btn-ghost { text-decoration: none; }
+
+@media (max-width: 640px) {
+  .lesson-actions .btn { flex: 1 1 100%; }
+}

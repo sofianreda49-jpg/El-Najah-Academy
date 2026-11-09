@@ -1,0 +1,6 @@
+.no-margin { margin: 0; }
+.course-card.static { cursor: default; }
+.course-card.static:hover { transform: none; box-shadow: var(--shadow-sm); border-color: var(--border); }
+.link-title { margin-top: 22px; }
+.link-results { margin-top: 10px; }
+.view-only { margin-top: 14px; font-size: 13px; }

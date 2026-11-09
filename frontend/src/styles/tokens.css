@@ -1,0 +1,90 @@
+/* ===== نظام التصميم: ألوان وأبعاد المنصة =====
+   الكحلي هو الأساسي (من الشعار)، والخلفيات رمادي فاتح وأبيض، والذهبي لمسة تمييز بس. */
+:root {
+  /* الكحلي */
+  --navy-950: #061224;
+  --navy-900: #0b2545;
+  --navy-800: #123566;
+  --navy-700: #1b4585;
+  --navy: var(--navy-900);
+
+  /* التمييز */
+  --gold: #b8893d;
+  --gold-ink: #8a6422;
+  --gold-soft: #f6ebd3;
+
+  /* الأسطح */
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface-2: #f0f3f8;
+  --surface-3: #e7ecf4;
+  --text: #0f1f3a;
+  --muted: #5a6b82;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+
+  /* الأزرار */
+  --primary: #0b2545;
+  --primary-hover: #123566;
+  --on-primary: #ffffff;
+  --accent: #b8893d;
+
+  /* ألوان الحالة */
+  --info: #1d5fd6;
+  --info-soft: #e7effd;
+  --success: #167a50;
+  --success-soft: #e4f4ec;
+  --warning: #8f5f0f;
+  --warning-soft: #fbf1dc;
+  --danger: #c0392b;
+  --danger-soft: #fbe9e7;
+
+  --sidebar-bg: #0b2545;
+  --sidebar-text: #c5d0df;
+
+  /* ظلال وأبعاد */
+  --shadow-xs: 0 1px 2px rgba(15, 31, 58, 0.05);
+  --shadow-sm: 0 1px 3px rgba(15, 31, 58, 0.07), 0 1px 2px rgba(15, 31, 58, 0.04);
+  --shadow-md: 0 8px 24px rgba(15, 31, 58, 0.09);
+  --shadow-lg: 0 20px 48px rgba(15, 31, 58, 0.16);
+  --radius-sm: 10px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --topbar-h: 64px;
+
+  --font: 'Tajawal', 'Inter', system-ui, -apple-system, 'Segoe UI', Tahoma, Arial, sans-serif;
+}
+
+:root[data-theme='dark'] {
+  --bg: #08121f;
+  --surface: #0f2038;
+  --surface-2: #0b192d;
+  --surface-3: #162b48;
+  --text: #e8eef6;
+  --muted: #93a5bb;
+  --border: #1d3454;
+  --border-strong: #2a4569;
+
+  --primary: #c9a15a;
+  --primary-hover: #d8b26c;
+  --on-primary: #0b2545;
+  --accent: #c9a15a;
+
+  --gold-soft: #3a2f1a;
+  --gold-ink: #e0bd7c;
+  --info-soft: #11264a;
+  --success-soft: #12342a;
+  --warning-soft: #3a2e14;
+  --danger-soft: #3a1c1b;
+
+  --info: #7aa8ff;
+  --success: #3fcf8e;
+  --danger: #ff8a7c;
+  --warning: #e6b04a;
+
+  --sidebar-bg: #061224;
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 24px 56px rgba(0, 0, 0, 0.55);
+}

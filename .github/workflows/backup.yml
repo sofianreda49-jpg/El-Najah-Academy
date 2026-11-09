@@ -1,0 +1,29 @@
+# نسخة احتياطية يومية مشفّرة من الداتابيز. بتشتغل بس لما المشروع يتحط على GitHub (مستودع خاص Private).
+# الأسرار المطلوبة (Settings > Secrets and variables > Actions):
+#   BACKUP_DATABASE_URL   رابط الاتصال المباشر بـ Supabase بصيغة postgresql://...
+#   BACKUP_PASSPHRASE     كلمة سر طويلة لتشفير النسخة (احفظها في مكان آمن: من غيرها النسخة ما تتفتحش)
+name: daily-db-backup
+on:
+  schedule:
+    - cron: "0 1 * * *"   # كل يوم الساعة 1 صباحاً UTC
+  workflow_dispatch: {}
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump database
+        env:
+          DB_URL: ${{ secrets.BACKUP_DATABASE_URL }}
+        run: |
+          docker run --rm postgres:17 pg_dump "$DB_URL" --no-owner --no-privileges --schema=public > backup.sql
+      - name: Encrypt
+        env:
+          PASS: ${{ secrets.BACKUP_PASSPHRASE }}
+        run: |
+          gpg --symmetric --batch --yes --passphrase "$PASS" --cipher-algo AES256 -o backup-$(date +%F).sql.gpg backup.sql
+          rm backup.sql
+      - uses: actions/upload-artifact@v4
+        with:
+          name: najah-db-backup
+          path: backup-*.sql.gpg
+          retention-days: 30

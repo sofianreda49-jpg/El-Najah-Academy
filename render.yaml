@@ -1,0 +1,24 @@
+# إعداد النشر المجاني على Render (Blueprint). المكان: جذر المشروع (جنب فولدري backend و frontend).
+# ملاحظة: الخطة المجانية بتنام بعد حوالي 15 دقيقة من غير زوار (أول طلب بعدها بياخد 30-60 ثانية).
+services:
+  - type: web
+    name: najah-api
+    runtime: python
+    region: frankfurt          # أقرب منطقة لمصر
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    # الخطة المجانية مفيهاش preDeployCommand، فبنحدّث الداتابيز قبل تشغيل السيرفر مباشرة
+    startCommand: alembic upgrade head && python -m app.scripts.enable_rls && uvicorn app.main:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips="*"
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: ENVIRONMENT
+        value: production
+      - key: DATABASE_URL
+        sync: false            # بتدخله بإيدك في لوحة Render (سري)
+      - key: JWT_SECRET
+        sync: false            # بتدخله بإيدك (سري، ومختلف عن اللي على جهازك)
+      - key: CORS_ORIGINS
+        sync: false            # رابط الواجهة (https://....pages.dev)

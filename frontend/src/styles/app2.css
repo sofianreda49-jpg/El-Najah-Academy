@@ -1,0 +1,57 @@
+/* ============ صفحة الدخول: لوحة الشعار كريمي ============ */
+.auth-brand {
+  background: radial-gradient(120% 90% at 30% 15%, #fbf9f5 0%, #f4f1ea 55%, #ebe5d6 100%);
+  color: #0b2545;
+  gap: 22px;
+  box-shadow: inset 1px 0 0 rgba(184, 137, 61, .35);
+}
+.auth-brand img { width: min(400px, 74%); filter: drop-shadow(0 6px 18px rgba(11, 37, 69, .10)); }
+.auth-brand p { color: #4a5c73; font-size: 17px; max-width: 34ch; }
+.brand-points { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 10px; color: #2b3f5c; font-weight: 500; text-align: start; }
+.brand-points li { display: flex; align-items: center; gap: 10px; }
+.brand-points svg { color: var(--gold); flex-shrink: 0; }
+
+.google-btn { display: flex; justify-content: center; min-height: 44px; margin-top: 20px; }
+.auth-hint { margin-top: 8px; text-align: center; color: var(--muted); font-size: 13px; }
+.or-divider { display: flex; align-items: center; gap: 12px; margin: 18px 0 2px; color: var(--muted); font-size: 13px; }
+.or-divider::before, .or-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ============ التسجيل ============ */
+.register-card { max-width: 560px; }
+.success-card { text-align: center; }
+.success-card .empty-icon { margin-bottom: 12px; }
+.ltr-inline { direction: ltr; unicode-bidi: embed; display: inline-block; }
+.role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+.role-card {
+  display: grid; justify-items: center; gap: 4px; padding: 14px 8px; text-align: center; cursor: pointer;
+  border: 2px solid var(--border); border-radius: 14px; background: var(--bg); transition: border-color .15s, background .15s;
+}
+.role-card:hover { border-color: var(--accent); }
+.role-card.on { border-color: var(--accent); background: var(--gold-soft); }
+.role-card svg { color: var(--gold-ink); }
+.role-card small { color: var(--muted); font-size: 12px; line-height: 1.5; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+.role-card:focus-within { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* ============ طلبات التسجيل / طلاب الكورس ============ */
+.nav-badge {
+  margin-inline-start: auto; min-width: 22px; padding: 0 8px; border-radius: 999px;
+  background: var(--gold); color: var(--navy-900); font-size: 12px; font-weight: 800; text-align: center;
+}
+.note-cell { max-width: 260px; white-space: normal; }
+.inline-form { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.inline-form .input { flex: 1 1 240px; }
+.enrolled-list { margin-top: 12px; }
+
+@media (max-width: 560px) {
+  .role-grid { grid-template-columns: 1fr; }
+}
+
+/* ============ تبويبات الدخول / إنشاء حساب ============ */
+.auth-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; margin-bottom: 18px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); }
+.auth-tab { padding: 10px 8px; border: 0; border-radius: 9px; background: transparent; color: var(--muted); font-weight: 700; }
+.auth-tab:hover { color: var(--text); }
+.auth-tab.active { background: var(--surface); color: var(--text); box-shadow: var(--shadow-sm); }
+.role-hints { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.role-hints span { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; background: var(--gold-soft); color: var(--gold-ink); font-size: 13px; font-weight: 700; }
+code { padding: 0 6px; border-radius: 6px; background: var(--surface-2); direction: ltr; unicode-bidi: embed; }

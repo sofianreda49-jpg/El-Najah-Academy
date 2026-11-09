@@ -1,0 +1,113 @@
+/* ---------- أزرار إضافية ---------- */
+.btn-sm { min-height: 36px; padding: 6px 14px; font-size: 14px; }
+.btn-secondary { background: transparent; color: var(--text); border-color: var(--accent); }
+.btn-secondary:hover:not(:disabled) { background: var(--gold-soft); }
+.btn-danger { background: var(--danger); color: #fff; }
+.btn-danger:hover:not(:disabled) { filter: brightness(.92); }
+a.btn { text-decoration: none; }
+.icon-btn { cursor: pointer; transition: background .15s; }
+.icon-btn:hover { background: var(--surface-2); }
+.icon-btn.sm { width: 34px; height: 34px; }
+
+/* ---------- شارات وتنبيهات ---------- */
+.badge-ok { background: var(--success-soft); color: var(--success); border: 1px solid var(--success); }
+.badge-bad { background: var(--danger-soft); color: var(--danger); border: 1px solid var(--danger); }
+.badge-muted { background: var(--surface-2); color: var(--muted); border: 1px solid var(--border); }
+.mr-6 { margin-inline-start: 8px; }
+.alert-warn { background: var(--gold-soft); color: var(--gold-ink); border-color: var(--accent); }
+
+/* ---------- شريط الأدوات ---------- */
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 16px; }
+.search { position: relative; flex: 1 1 240px; min-width: 200px; }
+.search svg { position: absolute; inset-inline-start: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.search .input { padding-inline-start: 42px; }
+.toolbar-select { width: auto; min-width: 160px; flex: 0 1 auto; }
+.toolbar-end { margin-inline-start: auto; }
+
+/* ---------- الجداول ---------- */
+.table-wrap { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th, .table td { padding: 12px 10px; text-align: start; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.table th { color: var(--muted); font-weight: 700; font-size: 13px; white-space: nowrap; }
+.table tbody tr:last-child td { border-bottom: 0; }
+.table tbody tr:hover { background: var(--surface-2); }
+.ltr-cell { direction: ltr; text-align: right; }
+.row-actions { display: flex; gap: 6px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
+
+.pagination { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding-top: 14px; }
+.pagination-buttons { display: flex; align-items: center; gap: 10px; }
+
+.state-box { display: grid; justify-items: center; gap: 14px; padding: 36px 12px; }
+
+/* ---------- تبويبات ---------- */
+.tabs { display: flex; gap: 6px; border-bottom: 1px solid var(--border); margin-bottom: 20px; overflow-x: auto; }
+.tab {
+  padding: 10px 18px; border: 0; background: none; color: var(--muted); font-weight: 700;
+  border-bottom: 3px solid transparent; white-space: nowrap;
+}
+.tab:hover { color: var(--text); }
+.tab.active { color: var(--text); border-bottom-color: var(--accent); }
+
+/* ---------- النوافذ ---------- */
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center;
+  padding: 16px; background: rgba(7, 26, 51, .55); overflow-y: auto;
+}
+.modal {
+  width: 100%; max-width: 520px; max-height: calc(100vh - 32px); display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow-md);
+}
+.modal.wide { max-width: 720px; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 22px; border-bottom: 1px solid var(--border); }
+.modal-header h2 { font-size: 18px; }
+.modal-body { padding: 8px 22px 22px; overflow-y: auto; }
+.modal-footer { display: flex; justify-content: flex-end; gap: 10px; padding: 14px 22px; border-top: 1px solid var(--border); }
+
+.req { color: var(--danger); }
+.help { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+.check { display: flex; align-items: center; gap: 10px; margin-top: 16px; font-weight: 700; cursor: pointer; }
+.check input { width: 18px; height: 18px; accent-color: var(--accent); }
+textarea.input { resize: vertical; min-height: 80px; }
+.input.with-gen { padding-left: 92px; }
+.gen-btn { position: absolute; left: 6px; top: 50%; transform: translateY(-50%); min-height: 34px; }
+
+.credentials { display: grid; gap: 10px; margin-top: 12px; }
+.cred-row {
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  padding: 10px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+}
+.cred-row code { direction: ltr; display: inline-block; font-family: ui-monospace, Consolas, monospace; font-size: 16px; }
+
+/* ---------- إشعارات ---------- */
+.toasts { position: fixed; bottom: 20px; inset-inline-start: 20px; z-index: 200; display: flex; flex-direction: column; gap: 8px; }
+.toast { max-width: 340px; padding: 12px 16px; border-radius: 12px; color: #fff; box-shadow: var(--shadow-md); font-weight: 500; }
+.toast-success { background: var(--success); }
+.toast-error { background: var(--danger); }
+
+/* ---------- الهيكل الأساسي ---------- */
+.structure-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); align-items: start; }
+.section-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.section-head h3 { font-size: 17px; }
+.tree-group { margin-bottom: 14px; }
+.tree-row {
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  padding: 8px 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg);
+}
+.tree-parent { background: var(--surface-2); }
+.tree-children { display: grid; gap: 6px; margin-top: 8px; padding-inline-start: 18px; }
+.tree-children.flat { padding-inline-start: 0; margin-top: 0; }
+
+/* ---------- منشئ الكورس ---------- */
+.link-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 14px; color: var(--muted); text-decoration: none; font-weight: 700; }
+.link-back:hover { color: var(--text); }
+.units { display: grid; gap: 16px; margin-top: 16px; }
+.lessons { display: grid; gap: 6px; }
+.lesson-title { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-weight: 500; }
+.chip { display: inline-flex; align-items: center; gap: 4px; padding: 1px 10px; border-radius: 999px; background: var(--gold-soft); color: var(--gold-ink); font-size: 12px; font-weight: 700; }
+
+@media (max-width: 640px) {
+  .toolbar-select { flex: 1 1 100%; }
+  .toolbar-end { margin-inline-start: 0; width: 100%; }
+  .modal-footer { flex-direction: column-reverse; }
+  .modal-footer .btn { width: 100%; }
+}
