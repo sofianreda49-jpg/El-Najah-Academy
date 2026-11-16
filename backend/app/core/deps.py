@@ -1,3 +1,4 @@
+import os
 from fastapi import Depends, HTTPException, Request
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
@@ -60,4 +61,11 @@ def require_roles(*roles: Role):
 
 
 def client_ip(request: Request) -> str | None:
+    # على Vercel الـ headers دي بتتحط من شبكة Vercel نفسها والعميل مايقدرش يزوّرها.
+    # من غيرها كل المستخدمين هيظهروا بنفس الـ IP (حد المحاولات هيقفل على الكل).
+    if os.environ.get("VERCEL"):
+        for header in ("x-vercel-forwarded-for", "x-forwarded-for", "x-real-ip"):
+            value = request.headers.get(header)
+            if value:
+                return value.split(",")[0].strip()[:45]
     return request.client.host if request.client else None

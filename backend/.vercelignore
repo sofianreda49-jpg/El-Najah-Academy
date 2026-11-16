@@ -1,0 +1,13 @@
+venv
+.venv
+__pycache__
+*.pyc
+.env
+.env.*
+!.env.example
+alembic
+alembic.ini
+backups
+*.dump
+tests
+README.md

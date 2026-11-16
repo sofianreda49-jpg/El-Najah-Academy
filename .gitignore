@@ -1,26 +1,19 @@
-# Environment variables and secrets
+# أسرار وبيئات: ممنوع تترفع على GitHub أبداً
 .env
 .env.*
 !.env.example
-
-# Node.js
-node_modules/
-dist/
-npm-debug.log*
-yarn-debug.log*
-
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
 venv/
 .venv/
-.pytest_cache/
-
-# IDE
+node_modules/
+dist/
+__pycache__/
+*.pyc
+*.db
+*.sqlite
+*.zip
+* - Copy/
 .vscode/
-.idea/
+*.dump
+backups/
+.vercel/
 
-# Operating system
-.DS_Store
-Thumbs.db

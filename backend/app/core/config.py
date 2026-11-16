@@ -31,6 +31,8 @@ class Settings(BaseSettings):
     # اتصالات الداتابيز (Supabase المجاني عنده حد صغير للاتصالات)
     DB_POOL_SIZE: int = 5
     DB_MAX_OVERFLOW: int = 5
+    # للاستضافة Serverless (Vercel): اتصال جديد لكل طلب، والـ pooler (PgBouncer) هو اللي بيدير الاتصالات
+    DB_NULL_POOL: bool = False
 
     @field_validator("JWT_SECRET")
     @classmethod
