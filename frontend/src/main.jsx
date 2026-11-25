@@ -20,7 +20,8 @@ import './styles/teacher.css'
 import './styles/app2.css'
 import './styles/design.css'
 import './styles/responsive.css' // تحسينات الموبايل والتابلت
-import './styles/mobile-app.css' // واجهة الموبايل (شكل تطبيق) — لازم يتحمّل آخر ملف
+import './styles/mobile-app.css' // واجهة الموبايل (شكل تطبيق)
+import './styles/auth-mobile.css' // صفحة الدخول/التسجيل على الموبايل فقط — لازم يتحمّل آخر ملف
 import './utils/mobileTables.js' // تسميات خلايا الجداول لعرضها ككروت على الموبايل
 
 initTheme()

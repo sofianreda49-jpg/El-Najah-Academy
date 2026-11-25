@@ -1,0 +1,44 @@
+/* =====================================================================
+   auth-mobile.css — صفحة الدخول / إنشاء الحساب على الموبايل فقط
+   - النطاق: .auth-page (صفحة Login.jsx بس). كل التغييرات المرئية جوّه @media (max-width: 767px)،
+     وقاعدة واحدة أساسية بتخفي نسخة اللوجو الفاتحة الإضافية في باقي الحالات.
+   - الديسكتوب والتابلت وأي صفحة تانية: ما بيتأثروش.
+   - الفورم نفسه (الكارت، الحقول، الأزرار، زر جوجل، الألوان، الخطوط): ما اتلمسش.
+   ===================================================================== */
+
+/* نسخة اللوجو الفاتحة (للوضع الداكن على الموبايل فقط): مخفية في كل الحالات الأخرى (ديسكتوب/تابلت/وضع فاتح) */
+.auth-page .auth-brand img.auth-logo-alt { display: none; }
+
+@media (max-width: 767px) {
+  /* صفحة واحدة بخلفية واحدة: نفس لون خلفية الفورم (--bg) */
+  .auth-page {
+    display: flex; flex-direction: column;
+    min-height: 100vh; min-height: 100dvh;
+    background: var(--bg);
+  }
+
+  /* قسم اللوجو: اللوجو بس، في النص، من غير خلفية مميزة أو حدود أو ظل */
+  html[dir] .auth-page .auth-brand {
+    flex: 0 0 auto; gap: 0;
+    padding: calc(24px + env(safe-area-inset-top, 0px)) 16px 4px;
+    background: var(--bg); box-shadow: none; border: 0;
+  }
+  /* إخفاء الوصف وقايمة المميزات والفاصل الذهبي (كل حاجة غير الصورة) */
+  .auth-page .auth-brand > :not(img) { display: none; }
+
+  /* اللوجو: حجم مناسب للموبايل وبنفس النسبة الأصلية */
+  .auth-page .auth-brand img {
+    display: block; width: clamp(140px, 46vw, 190px); height: auto; max-width: 100%;
+    margin: 0 auto; filter: none;
+  }
+  /* نسخة اللوجو الفاتحة (أصل موجود في المشروع) للوضع الداكن بس */
+  :root[data-theme='dark'] .auth-page .auth-brand img { display: none; }
+  :root[data-theme='dark'] .auth-page .auth-brand img.auth-logo-alt { display: block; }
+
+  /* الفورم تحت اللوجو على طول، بنفس الخلفية */
+  .auth-page .auth-panel {
+    flex: 1 1 auto; align-items: flex-start; justify-content: center;
+    padding: 8px 14px calc(28px + env(safe-area-inset-bottom, 0px));
+    background: var(--bg);
+  }
+}

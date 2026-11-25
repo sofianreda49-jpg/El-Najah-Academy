@@ -9,6 +9,7 @@ import LanguageSwitch from '../components/LanguageSwitch.jsx'
 import { useApi } from '../hooks/useApi.js'
 import { useI18n } from '../i18n/index.jsx'
 import fullDark from '../assets/logo-full.png'
+import fullLight from '../assets/logo-full-light.png'
 import { tr } from '../i18n/index.jsx'
 
 export default function Login() {
@@ -73,6 +74,7 @@ export default function Login() {
     <div className="auth-page">
       <section className="auth-brand">
         <img src={fullDark} alt="El Najah Academy" />
+        <img className="auth-logo-alt" src={fullLight} alt="" aria-hidden="true" hidden />
         <div className="gold-divider" />
         <p>{t('auth.brand.desc')}</p>
         <ul className="brand-points">
