@@ -19,6 +19,7 @@ import './styles/parent.css'
 import './styles/teacher.css'
 import './styles/app2.css'
 import './styles/design.css'
+import './styles/responsive.css' // تحسينات الموبايل والتابلت (لازم يتحمّل آخر ملف)
 
 initTheme()
 

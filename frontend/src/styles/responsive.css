@@ -1,0 +1,215 @@
+/* =====================================================================
+   responsive.css — تحسينات الموبايل والتابلت
+   بيتحمّل آخر ملف (بعد design.css) عشان يتغلّب على أي قاعدة قبله.
+   كل القواعد جوّه media queries (أقصى عرض 1024px) → شكل الديسكتوب (1025px+) ما بيتغيّرش.
+
+   النقاط الفاصلة:
+     ≤ 1024px  تابلت وأصغر
+     ≤  900px  القايمة الجانبية بتتحوّل لدرج (نفس نقطة التطبيق الأصلية)
+     ≤  767px  موبايل (كبير + عادي + صغير)
+     ≤  480px  موبايل عادي وصغير
+     ≤  374px  موبايل صغير (320–374)
+   ===================================================================== */
+
+/* ---------- 1) الهيكل: إصلاح عمود القايمة الجانبية (≤ 900px) ----------
+   design.css بيحدد عمودين (268px + 1fr) من غير media query، فالمحتوى كان بيتحشر
+   جوّه عمود عرضه 268px وبيسيب فراغ جنبه. هنا بنرجّعه عمود واحد بعرض الشاشة كلها. */
+@media (max-width: 900px) {
+  .app-shell { grid-template-columns: minmax(0, 1fr); }
+  .main-area { min-width: 0; width: 100%; }
+
+  /* الدرج: ما يعدّيش عرض الشاشة، وما ينفعش يتركّز عليه وهو مقفول */
+  .sidebar {
+    width: min(280px, 86vw);
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    visibility: hidden;
+    transition: transform .2s ease, visibility 0s linear .2s;
+  }
+  .sidebar.open { visibility: visible; transition: transform .2s ease, visibility 0s; }
+  .overlay { z-index: 25; }
+  .sidebar { z-index: 30; }
+
+  /* منع تمرير الصفحة اللي ورا الدرج وهو مفتوح */
+  body:has(.sidebar.open) { overflow: hidden; }
+
+  .content { --pad: 14px; padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px)); }
+  /* شريط الدرس السفلي: هامشه لازم يساوي حشو المحتوى بالظبط وإلا بيعمل سكرول أفقي */
+  .lesson-bar { margin-inline: calc(-1 * var(--pad)); padding-inline: var(--pad); }
+}
+
+/* ---------- 2) تابلت (768–1024px) ---------- */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .content { --pad: 24px; padding-inline: var(--pad); }
+  .structure-grid { grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); }
+  .continue-grid { grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); }
+}
+
+/* ---------- 3) موبايل (≤ 767px) ---------- */
+@media (max-width: 767px) {
+  /* --- الشبكات: ما يبقاش فيه حد أدنى أكبر من عرض الشاشة --- */
+  .structure-grid { grid-template-columns: minmax(0, 1fr); }
+  .continue-grid { grid-template-columns: minmax(0, 1fr); }
+  .course-grid { grid-template-columns: minmax(0, 1fr); }
+  .stats { grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); }
+
+  /* --- المسافات والكروت --- */
+  .content { padding-top: 16px; }
+  .card { padding: 16px; }
+  .card-pad, .continue-card, .child-card { padding: 16px; }
+  .list-card { padding: 4px 14px; }
+  .page-header { margin-bottom: 16px; }
+  .section-row { margin: 22px 0 12px; }
+  .hero-card { padding: 20px 18px; }
+  .hero-card h2 { font-size: 20px; }
+  .dash-hero { padding: 20px 18px; }
+  .stat-value { font-size: 24px; }
+
+  /* --- الخطوط: عناوين ما تتكسرش بشكل وحش --- */
+  h1, h2, h3 { overflow-wrap: anywhere; text-wrap: balance; }
+  .lesson-title { font-size: clamp(20px, 5.5vw, 26px); }
+  .lesson-content { font-size: 16px; line-height: 1.9; }
+  .topbar-title { font-size: 15px; }
+
+  /* --- نصوص طويلة (إيميلات وأسماء) ما تعمّلش سكرول أفقي --- */
+  .ltr-inline, .ltr-cell, .list-title, .list-meta, .child-meta, .menu-head small { overflow-wrap: anywhere; }
+  .list-row > div, .child-last > div, .continue-next > div, .lesson-link-title, .cred-row > * { min-width: 0; }
+  .tree-row > :first-child { min-width: 0; overflow-wrap: anywhere; }
+  .ltr-inline { max-width: 100%; }
+  .cred-row { flex-wrap: wrap; }
+  .cred-row code { overflow-wrap: anywhere; font-size: 15px; }
+
+  /* --- أزرار وعناصر لمس مريحة (≥ 40px) --- */
+  .btn { min-height: 46px; }
+  .btn-sm { min-height: 40px; padding: 8px 14px; }
+  .icon-btn { width: 44px; height: 44px; }
+  .icon-btn.sm { width: 40px; height: 40px; }
+  .tab { padding: 12px 16px; }
+  .lang-switch button { min-height: 36px; padding: 4px 14px; }
+  .review-tabs button { min-height: 36px; }
+  .auth-tab { min-height: 44px; }
+  .menu-item { min-height: 44px; }
+  .nav-link { min-height: 46px; }
+  .check { min-height: 40px; }
+  .picker-row, .take-choice, .role-card { min-height: 48px; }
+  .pagination-buttons .btn { min-height: 44px; }
+  .section-link, .link-back { display: inline-flex; align-items: center; min-height: 40px; }
+  .crumbs { gap: 0 8px; }
+  .crumbs a { display: inline-flex; align-items: center; min-height: 40px; }
+  .sort-btn { min-height: 40px; }
+  .icon-btn, .icon-btn.sm { flex-shrink: 0; }
+
+  /* --- أزرار الصفحة الواحدة بعرض كامل لما تكون وحيدة في سطر --- */
+  .page-header > .btn, .page-header > a.btn { width: 100%; }
+  .quick-actions .btn { flex: 1 1 auto; }
+  .inline-form .btn { flex: 1 1 100%; }
+  .result-actions .btn { flex: 1 1 100%; }
+  .start-card .btn { width: 100%; }
+  .exam-nav .btn { flex: 1 1 0; }
+
+  /* --- شريط الأدوات / البحث --- */
+  .search { flex: 1 1 100%; min-width: 0; }
+
+  /* --- الجداول: سكرول أفقي جوّه الكارت + أول عمود ثابت + عرض أدنى يمنع تكسير العمود --- */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    margin-inline: -4px;
+    padding-inline: 4px;
+  }
+  .table { min-width: 620px; }
+  .table th, .table td { padding: 12px 10px; }
+  .table td { overflow-wrap: anywhere; }
+  .table td:first-child, .table th:first-child {
+    position: sticky; inset-inline-start: 0; z-index: 1;
+    min-width: 130px; background: var(--surface);
+    box-shadow: 1px 0 0 var(--border);
+  }
+  html[dir='rtl'] .table td:first-child, html[dir='rtl'] .table th:first-child { box-shadow: -1px 0 0 var(--border); }
+  .table th:first-child { background: var(--surface-2); }
+  .table tbody tr:hover td:first-child { background: var(--surface-2); }
+  .progress-cell { min-width: 140px; }
+  .note-cell { min-width: 180px; max-width: 260px; }
+  .row-actions { flex-wrap: nowrap; }
+
+  /* --- النوافذ المنبثقة --- */
+  .modal-backdrop { padding: 12px; padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
+  .modal, .modal.wide { max-width: 100%; max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); border-radius: 18px; }
+  .modal-header { padding: 14px 16px; }
+  .modal-body { padding: 8px 16px 18px; }
+  .modal-footer { padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px)); }
+  .picker-list { max-height: 50vh; }
+
+  /* --- الإشعارات (toasts): بعرض الشاشة ومن غير ما تتقصّ --- */
+  .toasts, html[dir='ltr'] .toasts {
+    inset-inline: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+  .toast { max-width: none; }
+
+  /* --- الدخول والتسجيل: اللوحة العلوية مضغوطة عشان النموذج يبان بدري --- */
+  .auth-brand { padding: 20px 16px; gap: 10px; }
+  .auth-brand img { width: min(150px, 46%); }
+  .auth-brand p { font-size: 14px; line-height: 1.7; max-width: none; }
+  .brand-points { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; margin-top: 2px; font-size: 13px; }
+  .auth-panel, .auth-single { padding: 20px 14px; align-items: flex-start; }
+  .auth-card { padding: 22px 18px; border-radius: 18px; }
+  .register-card { max-width: 100%; }
+  .auth-lang { margin-bottom: 4px; }
+
+  /* --- الاختبار: شريط الحل والنتيجة --- */
+  .attempt-bar { flex-wrap: wrap; }
+  .take-choice { padding: 14px; }
+  .q-text, .take-question h3 { overflow-wrap: anywhere; }
+  .result-hero { padding: 24px 14px; }
+  .result-emoji { font-size: 48px; }
+  .review-choice { align-items: flex-start; flex-wrap: wrap; }
+
+  /* --- رسم النشاط --- */
+  .chart-plot { gap: 6px; }
+  .chart-bars { height: 120px; gap: 3px; }
+  .bar { width: 10px; }
+  .chart-legend { flex-wrap: wrap; gap: 8px 14px; }
+
+  /* --- أجهزة اللمس: إلغاء حركة الـ hover اللي بتفضل "عالقة" --- */
+  .course-card:hover, .continue-card:hover, .child-card:hover { transform: none; }
+}
+
+/* ---------- 4) موبايل عادي (≤ 480px) ---------- */
+@media (max-width: 480px) {
+  .content { --pad: 12px; padding-inline: var(--pad); }
+  .topbar { gap: 8px; }
+  .user-trigger { min-height: 44px; }
+  .toolbar { gap: 8px; }
+  .toolbar .btn { flex: 1 1 auto; }
+  .stat-tiles { gap: 10px; }
+  .modal-footer { gap: 8px; }
+  .hero-pills { gap: 6px; }
+  .dash-hero h1 { font-size: 21px; }
+  .score-ring span { font-size: 24px; }
+  .result-score strong { font-size: 28px; }
+  .result-score span { font-size: 18px; }
+  .course-card h3, .continue-card h3, .child-card h3 { font-size: 17px; }
+  .qnav-grid { grid-auto-columns: 44px; }
+  .qnav { height: 44px; }
+}
+
+/* ---------- 5) موبايل صغير (320–374px) ---------- */
+@media (max-width: 374px) {
+  .content { --pad: 10px; padding-inline: var(--pad); }
+  .card, .card-pad, .continue-card, .child-card { padding: 14px; }
+  .topbar { padding-inline: 10px; }
+  .topbar-title { font-size: 14px; }
+  .auth-brand img { width: 110px; }
+  .auth-card { padding: 20px 14px; }
+  .stat-tiles-3 { gap: 8px; }
+  .stat-tiles-3 .tile-value { font-size: 19px; }
+  .tile-value { font-size: 20px; }
+  .tile-label { font-size: 13px; }
+  .hero-card h2 { font-size: 18px; }
+  .dash-hero h1, h1 { font-size: 20px; }
+  .btn { padding-inline: 14px; }
+  .modal-header h2 { font-size: 16px; }
+  .tab { padding: 12px 12px; }
+  .role-card { padding: 12px 6px; }
+  .lang-switch button { padding: 4px 10px; }
+}
