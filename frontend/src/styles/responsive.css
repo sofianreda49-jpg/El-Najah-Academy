@@ -109,28 +109,7 @@
   /* --- شريط الأدوات / البحث --- */
   .search { flex: 1 1 100%; min-width: 0; }
 
-  /* --- الجداول: سكرول أفقي جوّه الكارت + أول عمود ثابت + عرض أدنى يمنع تكسير العمود --- */
-  .table-wrap {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-    margin-inline: -4px;
-    padding-inline: 4px;
-  }
-  .table { min-width: 620px; }
-  .table th, .table td { padding: 12px 10px; }
-  .table td { overflow-wrap: anywhere; }
-  .table td:first-child, .table th:first-child {
-    position: sticky; inset-inline-start: 0; z-index: 1;
-    min-width: 130px; background: var(--surface);
-    box-shadow: 1px 0 0 var(--border);
-  }
-  html[dir='rtl'] .table td:first-child, html[dir='rtl'] .table th:first-child { box-shadow: -1px 0 0 var(--border); }
-  .table th:first-child { background: var(--surface-2); }
-  .table tbody tr:hover td:first-child { background: var(--surface-2); }
-  .progress-cell { min-width: 140px; }
-  .note-cell { min-width: 180px; max-width: 260px; }
-  .row-actions { flex-wrap: nowrap; }
+  /* الجداول: بتتحوّل لكروت في mobile-app.css */
 
   /* --- النوافذ المنبثقة --- */
   .modal-backdrop { padding: 12px; padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }

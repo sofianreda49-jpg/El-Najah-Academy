@@ -19,7 +19,9 @@ import './styles/parent.css'
 import './styles/teacher.css'
 import './styles/app2.css'
 import './styles/design.css'
-import './styles/responsive.css' // تحسينات الموبايل والتابلت (لازم يتحمّل آخر ملف)
+import './styles/responsive.css' // تحسينات الموبايل والتابلت
+import './styles/mobile-app.css' // واجهة الموبايل (شكل تطبيق) — لازم يتحمّل آخر ملف
+import './utils/mobileTables.js' // تسميات خلايا الجداول لعرضها ككروت على الموبايل
 
 initTheme()
 
